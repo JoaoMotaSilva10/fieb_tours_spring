@@ -3,6 +3,9 @@ package fieb.tours.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 @Data
 @Entity
 @Table(name = "passeios")
@@ -13,14 +16,14 @@ public class Passeio {
     private Long id;
 
     @Column(nullable = false)
-    private String nome;
+    private String titulo;
+
+    @Column
+    private String descricao;
 
     @Column(nullable = false)
-    private String valor;
+    private LocalDate data;
 
     @Column(nullable = false)
-    private String data;
-
-    @Column(nullable = false)
-    private String imagem; // URL ou caminho da imagem
+    private BigDecimal preco;
 }

@@ -12,11 +12,11 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "aluno_id", nullable = false)
     private Aluno aluno;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "passeio_id", nullable = false)
     private Passeio passeio;
 }
