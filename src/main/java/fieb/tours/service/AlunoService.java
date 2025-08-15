@@ -5,6 +5,7 @@ import fieb.tours.repository.AlunoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;
+import java.util.List;
 
 @Service
 public class AlunoService {
@@ -24,5 +25,9 @@ public class AlunoService {
         return alunoRepository.findByRm(rm)
                 .map(aluno -> aluno.getSenhaBase64().equals(Base64.getEncoder().encodeToString(senha.getBytes())))
                 .orElse(false);
+    }
+
+    public List<Aluno> listarTodos() {
+        return alunoRepository.findAll();
     }
 }

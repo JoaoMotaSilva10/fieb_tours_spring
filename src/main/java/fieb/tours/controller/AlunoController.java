@@ -4,6 +4,8 @@ import fieb.tours.model.Aluno;
 import fieb.tours.service.AlunoService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/alunos")
 @CrossOrigin("*") // Liberar para o Flutter
@@ -23,5 +25,10 @@ public class AlunoController {
     @PostMapping("/login")
     public boolean login(@RequestParam String rm, @RequestParam String senha) {
         return alunoService.autenticar(rm, senha);
+    }
+
+    @GetMapping
+    public List<Aluno> listarTodos() {
+        return alunoService.listarTodos();
     }
 }
