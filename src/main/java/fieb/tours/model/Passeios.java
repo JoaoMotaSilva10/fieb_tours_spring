@@ -8,8 +8,8 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "passeio", schema = "dbo")
-public class Passeio {
+@Table(name = "passeios", schema = "dbo")
+public class Passeios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

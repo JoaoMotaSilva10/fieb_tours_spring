@@ -1,5 +1,6 @@
 package fieb.tours.controller;
 
+import fieb.tours.dto.ReservaDTO;
 import fieb.tours.model.Reserva;
 import fieb.tours.service.ReservaService;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,8 @@ public class ReservaController {
     }
 
     @PostMapping
-    public Reserva reservar(@RequestBody Reserva reserva) {
-        return reservaService.reservar(reserva);
+    public Reserva reservar(@RequestBody ReservaDTO dto) {
+        return reservaService.reservarPorIds(dto.getAlunoId(), dto.getPasseioId());
     }
 
     @PutMapping("/{id}/cancelar")

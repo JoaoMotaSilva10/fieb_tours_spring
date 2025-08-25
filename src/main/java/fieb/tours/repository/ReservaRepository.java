@@ -8,9 +8,9 @@ import java.util.Optional;
 
 public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 
-    Optional<Reserva> findByAlunoIdAndPasseioId(Long alunoId, Long passeioId);
+    Optional<Reserva> findByAluno_IdAndPasseio_Id(Long alunoId, Long passeioId);
 
-    List<Reserva> findByAlunoId(Long alunoId);
+    List<Reserva> findByAluno_Id(Long alunoId);
 
-    List<Reserva> findByPasseioId(Long passeioId);
+    List<Reserva> findByPasseio_Id(Long passeioId);
 }

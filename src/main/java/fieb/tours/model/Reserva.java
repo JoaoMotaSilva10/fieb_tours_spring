@@ -18,7 +18,7 @@ public class Reserva {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "passeio_id", nullable = false)
-    private Passeio passeio;
+    private Passeios passeio;
 
     @Column(nullable = false)
     private String status = "CONFIRMADA"; // Status padrão

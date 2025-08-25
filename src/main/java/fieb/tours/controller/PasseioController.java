@@ -1,6 +1,6 @@
 package fieb.tours.controller;
 
-import fieb.tours.model.Passeio;
+import fieb.tours.model.Passeios;
 import fieb.tours.repository.PasseioRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,8 +11,6 @@ import java.util.List;
 @CrossOrigin("*")
 public class PasseioController {
 
-
-
     private final PasseioRepository passeioRepository;
 
     public PasseioController(PasseioRepository passeioRepository) {
@@ -20,7 +18,7 @@ public class PasseioController {
     }
 
     @GetMapping
-    public List<Passeio> listar() {
+    public List<Passeios> listar() {
         return passeioRepository.findAll();
     }
 }
