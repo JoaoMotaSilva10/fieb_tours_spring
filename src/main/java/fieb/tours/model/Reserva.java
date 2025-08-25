@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "reservas")
+@Table(name = "reservas", schema = "dbo")
 public class Reserva {
 
     @Id
@@ -19,4 +19,7 @@ public class Reserva {
     @ManyToOne(optional = false)
     @JoinColumn(name = "passeio_id", nullable = false)
     private Passeio passeio;
+
+    @Column(nullable = false)
+    private String status = "CONFIRMADA"; // Status padrão
 }

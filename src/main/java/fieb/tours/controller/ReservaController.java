@@ -1,7 +1,7 @@
 package fieb.tours.controller;
 
 import fieb.tours.model.Reserva;
-import fieb.tours.repository.ReservaRepository;
+import fieb.tours.service.ReservaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,19 +11,34 @@ import java.util.List;
 @CrossOrigin("*")
 public class ReservaController {
 
-    private final ReservaRepository reservaRepository;
+    private final ReservaService reservaService;
 
-    public ReservaController(ReservaRepository reservaRepository) {
-        this.reservaRepository = reservaRepository;
+    public ReservaController(ReservaService reservaService) {
+        this.reservaService = reservaService;
     }
 
     @PostMapping
     public Reserva reservar(@RequestBody Reserva reserva) {
-        return reservaRepository.save(reserva);
+        return reservaService.reservar(reserva);
+    }
+
+    @PutMapping("/{id}/cancelar")
+    public Reserva cancelar(@PathVariable Long id) {
+        return reservaService.cancelar(id);
     }
 
     @GetMapping
     public List<Reserva> listar() {
-        return reservaRepository.findAll();
+        return reservaService.listarTodas();
+    }
+
+    @GetMapping("/aluno/{alunoId}")
+    public List<Reserva> listarPorAluno(@PathVariable Long alunoId) {
+        return reservaService.listarPorAluno(alunoId);
+    }
+
+    @GetMapping("/passeio/{passeioId}")
+    public List<Reserva> listarPorPasseio(@PathVariable Long passeioId) {
+        return reservaService.listarPorPasseio(passeioId);
     }
 }
