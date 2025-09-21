@@ -1,9 +1,9 @@
 package fieb.tours.repository;
 
-import fieb.tours.model.Passeios;
+import fieb.tours.model.Passeio;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-
-public interface PasseioRepository extends JpaRepository<Passeios, Long> {
-
+@Repository
+public interface PasseioRepository extends JpaRepository<Passeio, Long> {
 }

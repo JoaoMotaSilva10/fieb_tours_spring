@@ -1,7 +1,7 @@
 package fieb.tours.controller;
 
-import fieb.tours.model.Passeios;
-import fieb.tours.repository.PasseioRepository;
+import fieb.tours.model.Passeio;
+import fieb.tours.service.PasseioService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,14 +11,29 @@ import java.util.List;
 @CrossOrigin("*")
 public class PasseioController {
 
-    private final PasseioRepository passeioRepository;
+    private final PasseioService passeioService;
 
-    public PasseioController(PasseioRepository passeioRepository) {
-        this.passeioRepository = passeioRepository;
+    public PasseioController(PasseioService passeioService) {
+        this.passeioService = passeioService;
     }
 
     @GetMapping
-    public List<Passeios> listar() {
-        return passeioRepository.findAll();
+    public List<Passeio> listarTodos() {
+        return passeioService.listarTodos();
+    }
+
+    @PostMapping("/registrar")
+    public Passeio registrar(@RequestBody Passeio passeio) {
+        return passeioService.registrar(passeio);
+    }
+
+    @PutMapping("/{id}")
+    public Passeio atualizar(@PathVariable Long id, @RequestBody Passeio passeio) {
+        return passeioService.atualizar(id, passeio);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        passeioService.deletar(id);
     }
 }

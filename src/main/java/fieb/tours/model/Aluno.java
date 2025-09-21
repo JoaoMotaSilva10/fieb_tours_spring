@@ -13,7 +13,7 @@ public class Aluno {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String rm; // Identificação
+    private String rm;
 
     @Column(nullable = false)
     private String nome;
@@ -22,8 +22,8 @@ public class Aluno {
     private String turma;
 
     @Column(nullable = false)
-    private Integer numeroChamada;
+    private int numeroChamada;
 
     @Column(nullable = false)
-    private String senhaBase64; // Armazena senha codificada
+    private String senhaBase64;
 }
