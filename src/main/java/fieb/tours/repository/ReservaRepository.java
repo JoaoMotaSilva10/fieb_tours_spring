@@ -2,15 +2,9 @@ package fieb.tours.repository;
 
 import fieb.tours.model.Reserva;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
-
+@Repository
 public interface ReservaRepository extends JpaRepository<Reserva, Long> {
-
-    Optional<Reserva> findByAluno_IdAndPasseio_Id(Long alunoId, Long passeioId);
-
-    List<Reserva> findByAluno_Id(Long alunoId);
-
-    List<Reserva> findByPasseio_Id(Long passeioId);
+    // Pode adicionar métodos customizados se precisar
 }

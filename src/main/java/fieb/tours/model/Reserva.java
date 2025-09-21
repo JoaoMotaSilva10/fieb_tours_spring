@@ -12,14 +12,15 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "aluno_id", nullable = false)
-    private Aluno aluno;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "passeio_id", nullable = false)
-    private Passeios passeio;
+    @Column(nullable = false)
+    private String nome;        // nome do aluno
 
     @Column(nullable = false)
-    private String status = "CONFIRMADA"; // Status padrão
+    private String turma;       // turma do aluno
+
+    @Column(nullable = false)
+    private String passeio;     // nome do passeio
+
+    @Column(nullable = false)
+    private String status = "nao-pago"; // status da reserva
 }

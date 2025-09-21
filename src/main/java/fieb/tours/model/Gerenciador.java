@@ -3,27 +3,24 @@ package fieb.tours.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 @Data
 @Entity
-@Table(name = "passeios", schema = "dbo")
-public class Passeios {
+@Table(name = "gerenciadores", schema = "dbo")
+public class Gerenciador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String titulo;
-
-    @Column
-    private String descricao;
+    private String nome;
 
     @Column(nullable = false)
-    private LocalDate data;
+    private String senhaBase64;
 
     @Column(nullable = false)
-    private BigDecimal preco;
+    private String unidade;
+
+    @Column(nullable = false, unique = true)
+    private String email; // Novo campo
 }

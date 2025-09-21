@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/alunos")
-@CrossOrigin("*") // Liberar para o Flutter/Web
+@CrossOrigin("*")
 public class AlunoController {
 
     private final AlunoService alunoService;
@@ -17,26 +17,39 @@ public class AlunoController {
         this.alunoService = alunoService;
     }
 
-    // Registrar um novo aluno
     @PostMapping("/registrar")
     public Aluno registrar(@RequestBody Aluno aluno) {
+        System.out.println("[AlunoController] POST /registrar");
         return alunoService.registrar(aluno);
     }
 
-    // Login agora recebe JSON com rm e senhaBase64
+    @PutMapping("/{id}")
+    public Aluno atualizar(@PathVariable Long id, @RequestBody Aluno aluno) {
+        System.out.println("[AlunoController] PUT /" + id);
+        return alunoService.atualizar(id, aluno);
+    }
+
     @PostMapping("/login")
     public Aluno login(@RequestBody Aluno aluno) {
-        return alunoService.autenticar(aluno.getRm(), aluno.getSenhaBase64())
+        System.out.println("[AlunoController] POST /login RM: " + aluno.getRm());
+        // Autenticar usando a senha em texto normal
+        return alunoService.autenticarPorSenhaTexto(aluno.getRm(), aluno.getSenhaBase64())
                 .map(a -> {
                     a.setSenhaBase64(null); // não expor senha
                     return a;
                 })
-                .orElse(null); // retorna null se não autenticado
+                .orElse(null);
     }
 
-    // Listar todos os alunos
     @GetMapping
     public List<Aluno> listarTodos() {
+        System.out.println("[AlunoController] GET /");
         return alunoService.listarTodos();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        System.out.println("[AlunoController] DELETE /" + id);
+        alunoService.deletar(id);
     }
 }
